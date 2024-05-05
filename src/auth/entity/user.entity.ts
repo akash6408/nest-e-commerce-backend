@@ -7,7 +7,6 @@ import {
   OneToMany,
 } from 'typeorm';
 import { Order } from '../../order/entity/order.entity';
-import * as bcrypt from 'bcryptjs';
 
 @Entity()
 export class User extends BaseEntity {
@@ -28,9 +27,6 @@ export class User extends BaseEntity {
 
   @Column()
   password: string;
-
-  @Column()
-  salt: string;
 
   @OneToMany(() => Order, (order) => order.user, { eager: false })
   orders: Order[];
